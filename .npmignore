@@ -1,0 +1,10 @@
+src
+*.log
+
+tsconfig*.json
+tslint.json
+.prettierignore
+.editorconfig
+
+.github/
+.circleci/
