@@ -1,6 +1,7 @@
 src
 *.log
 
+functional_tests/
 tsconfig*.json
 tslint.json
 .prettierignore
