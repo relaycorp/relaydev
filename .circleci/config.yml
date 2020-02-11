@@ -34,7 +34,7 @@ commands:
       - run:
           name: Add 'relaydev' to PATH
           command: sudo npm link
-      - run: npm test
+      - run: npm run test:ci
 
 workflows:
   version: 2

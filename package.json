@@ -14,7 +14,8 @@
     "static-checks:lint": "tslint --project .",
     "static-checks:prettier": "prettier \"src/**/*.ts\" --list-different",
     "clean": "trash build",
-    "test": "run-s build test:runner",
+    "test": "run-s build:dev test:runner",
+    "test:ci": "run-s test:runner",
     "test:runner": "./functional_tests/run.sh"
   },
   "bin": {
