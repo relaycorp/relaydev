@@ -61,3 +61,9 @@ For example, run the following to inspect the generated key:
 ```
 relaydev key gen-ecdh | openssl pkey -in - -inform DER -noout -text
 ```
+
+# Development
+
+If you're contributing to this package, after installing it locally with `npm install`, make sure to run `npm run build:dev` transpile the TypeScript code and make the `relaydev` script available in your `$PATH` -- you'll have to re-run that whenever you want to check your changes.
+
+To run the functional tests, run `npm test`.

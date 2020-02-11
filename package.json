@@ -5,7 +5,8 @@
   "scripts": {
     "prebuild": "run-s clean",
     "build": "tsc -p tsconfig.json",
-    "postbuild": "npm link",
+    "build:dev": "run-s build",
+    "postbuild:dev": "npm link",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:tslint": "tslint --fix --project .",
