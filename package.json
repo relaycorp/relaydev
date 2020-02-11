@@ -56,5 +56,9 @@
     "buffer-to-arraybuffer": "0.0.5",
     "make-promises-safe": "^5.1.0",
     "yargs": "^15.1.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "dev"
   }
 }
