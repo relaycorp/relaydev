@@ -31,6 +31,7 @@ commands:
             - node_modules
           key: v1-dependencies-node<< parameters.nodeVersion >>-{{ checksum "package.json" }}
       - run: npm run static-checks
+      - run: npm run build
       - run:
           name: Add 'relaydev' to PATH
           command: sudo npm link
