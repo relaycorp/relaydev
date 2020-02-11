@@ -9,13 +9,13 @@ Relaynet couriers, service providers or end users do not need to use this softwa
 You must have Node.js 10 or newer to use this software. To get the latest stable version, run:
 
 ```
-npm install @relaycorp/relaydev
+npm install -g @relaycorp/relaydev
 ```
 
 And to get or upgrade to the latest development version, run:
 
 ```
-npm install @relaycorp/relaydev@dev
+npm install -g @relaycorp/relaydev@dev
 ```
 
 ## `relaydev` CLI
