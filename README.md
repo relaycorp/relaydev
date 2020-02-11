@@ -42,7 +42,7 @@ For example, run the following to inspect the generated key:
 relaydev key gen-rsa | openssl rsa -check -in - -inform DER -noout -text
 ```
 
-## `relaydev key gen-ecdh`: Generate an ECDH key
+### `relaydev key gen-ecdh`: Generate an ECDH key
 
 ```
 $ relaydev key gen-ecdh --help
@@ -62,7 +62,7 @@ For example, run the following to inspect the generated key:
 relaydev key gen-ecdh | openssl pkey -in - -inform DER -noout -text
 ```
 
-## `relaydev cert issue`: Issue a Relaynet PKI Certificate
+### `relaydev cert issue`: Issue a Relaynet PKI Certificate
 
 ```
 $ relaydev cert issue --help
@@ -93,7 +93,7 @@ openssl rsa -in key.der -inform DER -pubout -outform DER | \
   > cert.der
 ```
 
-## `relaydev cert inspect`: Inspect a Relaynet PKI Certificate
+### `relaydev cert inspect`: Inspect a Relaynet PKI Certificate
 
 ```
 $ relaydev cert inspect --help
