@@ -2,7 +2,7 @@ KEY="$(mktemp)"
 trap "rm '${KEY}'" INT TERM EXIT
 relaydev key gen-rsa > "${KEY}"
 
-TOMORROW="$(date --date='tomorrow')"
+TOMORROW="$(date --date='tomorrow' --iso-8601=seconds)"
 
 # Inspect valid certificate:
 openssl rsa -in "${KEY}" -inform DER -pubout -outform DER | \

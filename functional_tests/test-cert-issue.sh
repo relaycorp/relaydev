@@ -5,7 +5,7 @@ SUBJECT_KEY="${TMP_DIR}/subject-key.der"
 ISSUER_KEY="${TMP_DIR}/issuer-key.der"
 ISSUER_CERT="${TMP_DIR}/issuer-cert.der"
 
-TOMORROW="$(date --date='tomorrow')"
+TOMORROW="$(date --date='tomorrow' --iso-8601=seconds)"
 
 relaydev key gen-rsa > "${ISSUER_KEY}"
 relaydev key gen-rsa > "${SUBJECT_KEY}"

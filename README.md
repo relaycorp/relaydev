@@ -85,7 +85,7 @@ Options:
 For example, the following will create a self-issued gateway certificate that expires the following week:
 
 ```
-END_DATE="$(date --date='next week')"
+END_DATE="$(date --date='next week' --iso-8601=seconds)"
 relaydev key gen-rsa > key.der
 
 openssl rsa -in key.der -inform DER -pubout -outform DER | \
@@ -116,4 +116,7 @@ relaydev cert inspect < cert.der
 
 If you're contributing to this package, after installing it locally with `npm install`, make sure to run `npm run build:dev` to transpile the TypeScript code and make the `relaydev` script available in your `$PATH` -- you'll have to re-run that whenever you want to check your changes.
 
-To run the functional tests, run `npm test`.
+To run the functional tests, run `npm test`. Note you'll need the following dependencies in your `$PATH` to run the tests:
+
+- `openssl`
+- `jq`
