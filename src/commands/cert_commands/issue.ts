@@ -1,5 +1,4 @@
 import {
-  Certificate,
   derDeserializeRSAPrivateKey,
   derDeserializeRSAPublicKey,
   issueDeliveryAuthorization,
@@ -7,9 +6,10 @@ import {
   issueGatewayCertificate,
   issueInitialDHKeyCertificate,
 } from '@relaycorp/relaynet-core';
-import bufferToArray from 'buffer-to-arraybuffer';
 import { promises as fs } from 'fs';
 import { buffer as getStdin } from 'get-stdin';
+import { deserializeCertificate } from '../../utils/pki';
+import { parseDate } from '../../utils/time';
 
 export const command = 'issue issuer-key';
 
@@ -31,7 +31,7 @@ const issuanceFunctions: {
 
 export const builder = {
   'end-date': {
-    coerce: (val: string) => new Date(val),
+    coerce: parseDate,
     demandOption: true,
     description: 'Certificate end date; e.g., "2014-02-20" or "2014-02-20T08:00:23"',
     type: 'string',
@@ -90,9 +90,4 @@ export async function handler(argv: ArgumentSet): Promise<void> {
     validityEndDate: argv['end-date'],
   });
   process.stdout.write(Buffer.from(cert.serialize()));
-}
-
-async function deserializeCertificate(certificatePath: string): Promise<Certificate> {
-  const certificateDer = await fs.readFile(certificatePath);
-  return Certificate.deserialize(bufferToArray(certificateDer));
 }
