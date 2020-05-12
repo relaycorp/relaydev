@@ -20,21 +20,11 @@ npm install -g @relaycorp/relaydev@dev
 
 ## `relaydev` CLI
 
+To learn how to use a sub-command, run it without arguments or with the `--help` option.
+
 ## `key`: Key management
 
 ### `relaydev key gen-rsa`: Generate an RSA key
-
-```
-$ relaydev key gen-rsa --help
-relaydev key gen-rsa
-
-Generate an RSA key and output its private component DER-encoded
-
-Options:
-  --version  Show version number                                       [boolean]
-  --help     Show help                                                 [boolean]
-  --modulus                 [number] [choices: 2048, 3072, 4096] [default: 2048]
-```
 
 For example, run the following to inspect the generated key:
 
@@ -44,18 +34,6 @@ relaydev key gen-rsa | openssl rsa -check -in - -inform DER -noout -text
 
 ### `relaydev key gen-ecdh`: Generate an ECDH key
 
-```
-$ relaydev key gen-ecdh --help
-relaydev key gen-ecdh
-
-Generate an ECDH key and output its private component DER-encoded
-
-Options:
-  --version     Show version number                                    [boolean]
-  --help        Show help                                              [boolean]
-  --curve-name  [string] [choices: "P-256", "P-384", "P-521"] [default: "P-256"]
-```
-
 For example, run the following to inspect the generated key:
 
 ```
@@ -63,24 +41,6 @@ relaydev key gen-ecdh | openssl pkey -in - -inform DER -noout -text
 ```
 
 ### `relaydev cert issue`: Issue a Relaynet PKI Certificate
-
-```
-$ relaydev cert issue --help
-relaydev cert issue issuer-key
-
-Issue a Relaynet PKI certificate and output its DER serialization
-
-Options:
-  --version            Show version number                             [boolean]
-  --help               Show help                                       [boolean]
-  --end-date           Certificate end date; e.g., "2014-02-20" or
-                       "2014-02-20T08:00:23"                 [string] [required]
-  --hashing-algorithm
-        [string] [choices: "SHA-256", "SHA-384", "SHA-512"] [default: "SHA-256"]
-  --issuer-cert        Path to DER-encoded X.509 certificate of issuer, unless
-                       it will be self-issued                           [string]
-  --type  [string] [required] [choices: "endpoint", "gateway", "pda", "session"]
-```
 
 For example, the following will create a self-issued gateway certificate that expires the following week:
 
@@ -95,21 +55,30 @@ openssl rsa -in key.der -inform DER -pubout -outform DER | \
 
 ### `relaydev cert inspect`: Inspect a Relaynet PKI Certificate
 
-```
-$ relaydev cert inspect --help
-relaydev cert inspect
-
-Inspect DER-encoded Relaynet PKI certificate
-
-Options:
-  --version  Show version number                                       [boolean]
-  --help     Show help                                                 [boolean]
-```
-
 For example, to inspect the certificate `cert.der`, run:
 
 ```
 relaydev cert inspect < cert.der
+```
+
+### `relaydev ramf serialize`: Create and serialize a RAMF message
+
+For example, run the following to create a cargo `cargo.ramf` whose payload is contained in the file `cargo-message-set.cms`:
+
+```
+cat cargo-message-set.cms | relaydev ramf serialize cargo \
+    --recipient-address=https://example.com \
+    --sender-key=key.der \
+    --sender-cert=cert.der \
+    > cargo.ramf
+```
+
+### `relaydev ramf deserialize`: Deserialize and validate a RAMF message
+
+For example, to inspect the cargo message created above, run:
+
+```
+relaydev ramf deserialize < cargo.ramf
 ```
 
 # Development
