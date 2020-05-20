@@ -47,7 +47,7 @@ export async function handler(_argv: ArgumentSet): Promise<void> {
     payload: ramfMessage.payloadSerialized.toString('base64'),
     recipientAddress: ramfMessage.recipientAddress,
     senderCertificate: Buffer.from(ramfMessage.senderCertificate.serialize()).toString('base64'),
-    senderCertificateChain: ramfMessage.senderCaCertificateChain.map(c =>
+    senderCertificateChain: ramfMessage.senderCaCertificateChain.map((c) =>
       Buffer.from(c.serialize()).toString('base64'),
     ),
     ttl: ramfMessage.ttl,
