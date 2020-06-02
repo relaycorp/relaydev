@@ -70,7 +70,7 @@ export async function handler(argv: ArgumentSet): Promise<void> {
     senderCertificate,
     await getStdin(),
     {
-      date: argv['creation-date'],
+      creationDate: argv['creation-date'],
       senderCaCertificateChain: await Promise.all(
         (argv['sender-cert-chain'] || []).map(deserializeCertificate),
       ),

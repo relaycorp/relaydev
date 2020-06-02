@@ -1,9 +1,9 @@
-import { Cargo, CargoCollectionAuthorization, Message, Parcel } from '@relaycorp/relaynet-core';
+import { Cargo, CargoCollectionAuthorization, Parcel, RAMFMessage } from '@relaycorp/relaynet-core';
 import bufferToArray from 'buffer-to-arraybuffer';
 import { buffer as getStdin } from 'get-stdin';
 
 const RAMF_DESERIALIZER_BY_TYPE_OCTET: {
-  readonly [key: number]: (s: ArrayBuffer) => Promise<Message<any>>;
+  readonly [key: number]: (s: ArrayBuffer) => Promise<RAMFMessage<any>>;
 } = {
   0x43: Cargo.deserialize,
   0x44: CargoCollectionAuthorization.deserialize,
@@ -40,9 +40,11 @@ export async function handler(_argv: ArgumentSet): Promise<void> {
 
   const concreteMessageTypeOctet = ramfMessageSerialized[8];
   const deserializer = RAMF_DESERIALIZER_BY_TYPE_OCTET[concreteMessageTypeOctet];
-  const ramfMessage = (await deserializer(bufferToArray(ramfMessageSerialized))) as Message<any>;
+  const ramfMessage = (await deserializer(bufferToArray(ramfMessageSerialized))) as RAMFMessage<
+    any
+  >;
   const deserialization: Deserialization = {
-    creationDate: ramfMessage.date,
+    creationDate: ramfMessage.creationDate,
     id: ramfMessage.id,
     payload: ramfMessage.payloadSerialized.toString('base64'),
     recipientAddress: ramfMessage.recipientAddress,
