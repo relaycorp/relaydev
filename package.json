@@ -57,7 +57,7 @@
     "buffer-to-arraybuffer": "0.0.5",
     "get-stdin": "^8.0.0",
     "make-promises-safe": "^5.1.0",
-    "yargs": "^15.1.0"
+    "yargs": "^16.0.0"
   },
   "publishConfig": {
     "access": "public",
