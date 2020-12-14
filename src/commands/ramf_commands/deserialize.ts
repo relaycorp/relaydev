@@ -40,9 +40,9 @@ export async function handler(_argv: ArgumentSet): Promise<void> {
 
   const concreteMessageTypeOctet = ramfMessageSerialized[8];
   const deserializer = RAMF_DESERIALIZER_BY_TYPE_OCTET[concreteMessageTypeOctet];
-  const ramfMessage = (await deserializer(bufferToArray(ramfMessageSerialized))) as RAMFMessage<
-    any
-  >;
+  const ramfMessage = (await deserializer(
+    bufferToArray(ramfMessageSerialized),
+  )) as RAMFMessage<any>;
   const deserialization: Deserialization = {
     creationDate: ramfMessage.creationDate,
     id: ramfMessage.id,
