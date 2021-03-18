@@ -54,7 +54,7 @@
     "url": "https://github.com/relaycorp/relaydev/issues"
   },
   "dependencies": {
-    "@relaycorp/relaynet-core": "^1.27.1",
+    "@relaycorp/relaynet-core": "^1.42.7",
     "buffer-to-arraybuffer": "0.0.6",
     "get-stdin": "^8.0.0",
     "make-promises-safe": "^5.1.0",
