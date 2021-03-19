@@ -22,7 +22,7 @@
     "relaydev": "./build/main/cli.js"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "devDependencies": {
     "@relaycorp/shared-config": "^1.3.3",
@@ -54,6 +54,7 @@
     "url": "https://github.com/relaycorp/relaydev/issues"
   },
   "dependencies": {
+    "@peculiar/webcrypto": "^1.1.6",
     "@relaycorp/relaynet-core": "^1.42.7",
     "buffer-to-arraybuffer": "0.0.6",
     "get-stdin": "^8.0.0",
@@ -62,6 +63,6 @@
   },
   "publishConfig": {
     "access": "public",
-    "tag": "dev"
+    "tag": "latest"
   }
 }
