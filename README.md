@@ -40,6 +40,16 @@ For example, run the following to inspect the generated key:
 relaydev key gen-ecdh | openssl pkey -in - -inform DER -noout -text
 ```
 
+### `relaydev key get-rsa-pub`: Derive the public key of an RSA private key
+
+For example, run the following to inspect the extracted public key:
+
+```
+relaydev key gen-rsa | \
+  relaydev key get-rsa-pub | \
+  openssl rsa -in - -inform DER -pubin -noout -text
+```
+
 ### `relaydev cert issue`: Issue a Relaynet PKI Certificate
 
 For example, the following will create a self-issued gateway certificate that expires the following week:
