@@ -34,7 +34,7 @@
     "prettier": "^2.0.5",
     "trash-cli": "^4.0.0",
     "tslint": "^5.18.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.9.10"
   },
   "prettier": "@relaycorp/shared-config/.prettierrc.json",
   "repository": {
