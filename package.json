@@ -57,7 +57,7 @@
     "@peculiar/webcrypto": "^1.1.7",
     "@relaycorp/relaynet-core": "^1.44.0",
     "buffer-to-arraybuffer": "0.0.6",
-    "get-stdin": "^8.0.0",
+    "get-stdin": "^9.0.0",
     "make-promises-safe": "^5.1.0",
     "yargs": "^16.0.3"
   },
