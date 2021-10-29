@@ -4,7 +4,6 @@ import {
   issueDeliveryAuthorization,
   issueEndpointCertificate,
   issueGatewayCertificate,
-  issueInitialDHKeyCertificate,
 } from '@relaycorp/relaynet-core';
 import { promises as fs } from 'fs';
 import { buffer as getStdin } from 'get-stdin';
@@ -15,18 +14,16 @@ export const command = 'issue issuer-key';
 
 export const description = 'Issue a Relaynet PKI certificate and output its DER serialization';
 
-type CertificateType = 'gateway' | 'endpoint' | 'pda' | 'session';
+type CertificateType = 'gateway' | 'endpoint' | 'pda';
 const issuanceFunctions: {
   readonly [key in CertificateType]:
     | typeof issueEndpointCertificate
     | typeof issueGatewayCertificate
-    | typeof issueDeliveryAuthorization
-    | typeof issueInitialDHKeyCertificate;
+    | typeof issueDeliveryAuthorization;
 } = {
   endpoint: issueEndpointCertificate,
   gateway: issueGatewayCertificate,
   pda: issueDeliveryAuthorization,
-  session: issueInitialDHKeyCertificate,
 };
 
 export const builder = {
@@ -72,7 +69,7 @@ export async function handler(argv: ArgumentSet): Promise<void> {
   const issuerCertificate = argv['issuer-cert']
     ? await deserializeCertificate(argv['issuer-cert'])
     : undefined;
-  if (issuerCertificate === undefined && ['pda', 'session'].includes(argv.type)) {
+  if (issuerCertificate === undefined && argv.type === 'pda') {
     throw new Error(
       'This certificate type cannot be self-issued: An issuer certificate is required',
     );
