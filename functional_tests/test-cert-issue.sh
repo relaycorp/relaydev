@@ -64,17 +64,10 @@ openssl x509 -in - -inform DER -noout < "${ISSUER_CERT}"
     | \
   openssl x509 -in - -inform DER -noout
 
-# Self-issued Channel Session key (invalid, so it should fail!)
-! (
-  relaydev key gen-rsa | \
-  extractRsaPublicKey | \
-  relaydev cert issue --type=session --end-date="${TOMORROW}" "${ISSUER_KEY}" 2>/dev/null
-)
-
 # PDA certificate:
 (extractRsaPublicKey < "${SUBJECT_KEY}") | \
   relaydev cert issue \
-    --type=session \
+    --type=pda \
     --issuer-cert="${ISSUER_CERT}" \
     --end-date="${TOMORROW}" \
     "${ISSUER_KEY}" \
