@@ -54,7 +54,7 @@
     "url": "https://github.com/relaycorp/relaydev/issues"
   },
   "dependencies": {
-    "@peculiar/webcrypto": "^1.1.7",
+    "@peculiar/webcrypto": "^1.2.2",
     "@relaycorp/relaynet-core": "^1.54.0",
     "buffer-to-arraybuffer": "0.0.6",
     "get-stdin": "^8.0.0",
