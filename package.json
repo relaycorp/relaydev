@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "@peculiar/webcrypto": "^1.1.7",
-    "@relaycorp/relaynet-core": "^1.58.1",
+    "@relaycorp/relaynet-core": "^1.76.0",
     "buffer-to-arraybuffer": "0.0.6",
     "get-stdin": "^8.0.0",
     "make-promises-safe": "^5.1.0",
